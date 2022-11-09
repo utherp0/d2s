@@ -1,6 +1,6 @@
 * xref:001_introduction_to_openshift.adoc[A High Level Introduction to OpenShift]
 * xref:002_deploying_an_application.adoc[Deploying an Application to OpenShift]
-* xref:003_deploying_an_application_from_source.adoc[Deploying an Application from Source Code]
+* xref:003_s2i.adoc[Deploying an Application from Source Code]
 * xref:004_configuring_an_application.adoc[Configuring an Application]
 * xref:005_deploying_multiple_applications.adoc[Deploying Multiple Apps]
 * xref:006_config_injection.adoc[Injecting Configuration into Apps]
