@@ -1,0 +1,39 @@
+= Configuring An Application
+:!sectids:
+
+image::004-image001.png[Editing the Deployment Config]
+
+== *Configuring an OpenShift Application*
+
+====
+*What will you learn?*
+
+This module will introduce you to the configuration options for the Applications running within OpenShift
+
+This will highlight the components you can change and their effect
+
+After completing the Module you will be able set various behaviours of the Application running in OpenShift, from the perspective of the way in which the Application is hosted
+====
+
+=== *Pre-Requisites*
+
+In order to undertake the Module you need to be logged onto the D2S cluster and have access to a Project. This Project is pre-created for you by the D2S Admins.
+
+*Ensure the two textboxes at the top of this HTML Guide to the Module contain the D2S Cluster address and the Project you have been assigned.* If not use the 'Copy' button on the text below to get the Cluster address and add it to the Cluster textbox above (pressing *RETURN* after pasting it). Then add the Project name if it is not already there, again pressing *RETURN* after entering it into the field.
+
+[.console-input]
+[source,bash]
+----
+apps.ocp1.azure.dso.digital.mod.uk
+----
+
+=== *Setting up the Application for the Module*
+
+This Module will explain the mechanics of configuring an Application's behaviour while running in OpenShift.
+
+[NOTE]
+====
+This Module is all about crafting the way in which the Application operates within OpenShift itself. OpenShift hosts the Application as a Pod containing one (or more)
+running Containers; in this Module we will adjust the way in which OpenShift hosts the Application, not the actual Application behaviour. In Module 006 we will examine the ways
+in which additional information can be provided to a running Application to effect the way in which it operates (using Config Maps and Environment Variables).
+====

@@ -1,0 +1,32 @@
+= Adding Persistent Storage to Applications
+:!sectids:
+
+image::008-image001.png[Setting up Storage]
+
+== *Adding Persistent Storage to Applications*
+
+====
+*What will you learn?*
+
+The Module introduces the concepts of Persistent Storage, which gives Applications storage that exists and persists beyond the lifespan of the Pod running in OpenShift
+
+This will demonstrate the concept, usecases and constructs used to create, manipulate and retain storage for Applications
+
+After completing this Module you will understand the concepts of Persisted Storage with regard to Applications in OpenShift
+====
+
+=== *Pre-Requisites*
+
+In order to undertake the Module you need to be logged onto the D2S cluster and have access to a Project. This Project is pre-created for you by the D2S Admins.
+
+*Ensure the two textboxes at the top of this HTML Guide to the Module contain the D2S Cluster address and the Project you have been assigned.* If not use the 'Copy' button on the text below to get the Cluster address and add it to the Cluster textbox above (pressing *RETURN* after pasting it). Then add the Project name if it is not already there, again pressing *RETURN* after entering it into the field.
+
+[.console-input]
+[source,bash]
+----
+apps.ocp1.azure.dso.digital.mod.uk
+----
+
+=== *Setting up an example Application for the module*
+
+First we will setup an example Application to show the use of Persistent Volumes and Storage within OpenShift

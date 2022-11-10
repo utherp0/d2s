@@ -1,0 +1,32 @@
+= Understanding Application Networking
+:!sectids:
+
+image::009-image001.png[The Services in a Project]
+
+== *Understanding Application Networking*
+
+====
+*What will you learn?*
+
+This Module will go into depth around the mechanisms for Networking of Applications within OpenShift. This will cover the Services, which are bound to the Project, Routes, which provide the external traffic connectivity and inter-Application networking. It will also explain Network Policies which allow for fine-grain control of traffic to a Service.
+
+The Module will include some practical examples of Networking using three distinct Services in the Project
+
+After completing this Module you will understand the nature of the abstracted SDN and the Service endpoints, how to setup Routes and what capabilities inter-Application Networking provides for Developers
+====
+
+=== *Pre-Requisites*
+
+In order to undertake the Module you need to be logged onto the D2S cluster and have access to a Project. This Project is pre-created for you by the D2S Admins.
+
+*Ensure the two textboxes at the top of this HTML Guide to the Module contain the D2S Cluster address and the Project you have been assigned.* If not use the 'Copy' button on the text below to get the Cluster address and add it to the Cluster textbox above (pressing *RETURN* after pasting it). Then add the Project name if it is not already there, again pressing *RETURN* after entering it into the field.
+
+[.console-input]
+[source,bash]
+----
+apps.ocp1.azure.dso.digital.mod.uk
+----
+
+=== *Setting up the example Applications for the module*
+
+First we will setup three simple Applications within the Project

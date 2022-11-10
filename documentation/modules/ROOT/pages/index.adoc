@@ -3,7 +3,7 @@
 
 == *A Developer's Introduction to D2S/OpenShift*
 
-Welcome to the D2S Developer's Introduction training material. The goal of this online introduction is to get a Developer up to speed on the functionality and nuances of developing applications using the D2S platform.
+*Welcome to the D2S Developer's Introduction training material.* The goal of this online introduction is to get a Developer up to speed on the functionality and nuances of developing applications using the D2S platform.
 
 The course is divided into a set of small, easy to consume, self-paced modules that cover varied aspects of the platform. It is aimed at people who have minimal experience, if any, of Kubernetes and Container platforms.
 

@@ -1,0 +1,34 @@
+= Introducing Pipelines for Developers
+:!sectids:
+
+image::010-image001.png[Creating a Pipeline using the UI]
+
+== *Introducing Pipelines for Developers*
+
+====
+*What will you learn?*
+
+This Module will explain the basics of the Tekton Pipeline functionality within OpenShift from a developer's perspective
+
+The Module will walk you through creating tasks and pipelines, executing those tasks and pipelines within OpenShift, and how to add persistent storage between tasks.
+
+It will also explain the theory behind Tasks and Pipelines to enable you to understand and exploit the concepts
+
+After completing this Module you will understand the capabilities of Tekton and be able to create Tasks and Pipelines
+====
+
+=== *Pre-Requisites*
+
+In order to undertake the Module you need to be logged onto the D2S cluster and have access to a Project. This Project is pre-created for you by the D2S Admins.
+
+*Ensure the two textboxes at the top of this HTML Guide to the Module contain the D2S Cluster address and the Project you have been assigned.* If not use the 'Copy' button on the text below to get the Cluster address and add it to the Cluster textbox above (pressing *RETURN* after pasting it). Then add the Project name if it is not already there, again pressing *RETURN* after entering it into the field.
+
+[.console-input]
+[source,bash]
+----
+apps.ocp1.azure.dso.digital.mod.uk
+----
+
+=== *An overview of the basics; Tasks and Pipelines*
+
+Tekton provides a set of atomic components for creating extensive Pipeline functionality involving manipulating Objects within OpenShift.

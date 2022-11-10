@@ -1,0 +1,33 @@
+= Deploying Multiple Applications
+:!sectids:
+
+image::005-image001.png[Multiple Applications]
+
+== *Deploying Multiple Applications*
+
+====
+*What will you learn?*
+
+This short module will introduce you to the concepts around deploying multiple Applications in the same Project
+
+This will highlight the capabilities in terms of grouping and also the nature of implicit Service Discovery provided by OpenShift between Applications running in the same Project
+
+After completing the Module you will understand the concepts of multiple Application hosting and the advantages provided working within a single Project
+====
+
+=== *Pre-Requisites*
+
+In order to undertake the Module you need to be logged onto the D2S cluster and have access to a Project. This Project is pre-created for you by the D2S Admins.
+
+*Ensure the two textboxes at the top of this HTML Guide to the Module contain the D2S Cluster address and the Project you have been assigned.* If not use the 'Copy' button on the text below to get the Cluster address and add it to the Cluster textbox above (pressing *RETURN* after pasting it). Then add the Project name if it is not already there, again pressing *RETURN* after entering it into the field.
+
+[.console-input]
+[source,bash]
+----
+apps.ocp1.azure.dso.digital.mod.uk
+----
+
+=== *Installing the multiple Applications*
+
+First we will install three Applications, two of which will be in the same Application Group.
+

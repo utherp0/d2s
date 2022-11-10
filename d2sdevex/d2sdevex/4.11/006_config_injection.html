@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Untitled :: Developer Introduction to OpenShift</title>
+    <title>Configuration and Dependency Injection :: Developer Introduction to OpenShift</title>
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../../_/css/site.css">
 <link rel="icon" href="../../_/img/favicon.ico" type="image/x-icon">
@@ -150,34 +150,34 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="001_introduction_to_openshift.html">A High Level Introduction to OpenShift</a>
+    <a class="nav-link" href="001_introduction_to_openshift.html"><strong>001</strong> - A High Level Introduction to OpenShift</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="002_deploying_an_application.html">Deploying an Application to OpenShift</a>
+    <a class="nav-link" href="002_deploying_an_application.html"><strong>002</strong> - Deploying an Application to OpenShift</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="003_s2i.html">Deploying an Application from Source Code</a>
+    <a class="nav-link" href="003_s2i.html"><strong>003</strong> - Deploying an Application from Source Code</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="004_configuring_an_application.html">Configuring an Application</a>
+    <a class="nav-link" href="004_configuring_an_application.html"><strong>004</strong> - Configuring an Application</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="005_deploying_multiple_applications.html">Deploying Multiple Apps</a>
+    <a class="nav-link" href="005_deploying_multiple_applications.html"><strong>005</strong> - Deploying Multiple Apps</a>
   </li>
   <li class="nav-item is-current-page" data-depth="1">
-    <a class="nav-link" href="006_config_injection.html">Injecting Configuration into Apps</a>
+    <a class="nav-link" href="006_config_injection.html"><strong>006</strong> - Injecting Configuration into Apps</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="007_secrets.html">Injecting Secure Configuration into Apps</a>
+    <a class="nav-link" href="007_secrets.html"><strong>007</strong> - Injecting Secure Configuration into Apps</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="008_storage.html">Adding Storage to Apps</a>
+    <a class="nav-link" href="008_storage.html"><strong>008</strong> - Adding Storage to Apps</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="009_networking_applications.html">Understanding Application Networking</a>
+    <a class="nav-link" href="009_networking_applications.html"><strong>009</strong> - Understanding Application Networking</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="#010_ci_using_pipelines">Introducing Pipelines for Developers</a>
+    <a class="nav-link" href="010_pipelines.html"><strong>010</strong> - Introducing Pipelines for Developers</a>
   </li>
 </ul>
   </li>
@@ -210,14 +210,64 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">D2S Introduction to OpenShift Course</a></li>
-    <li><a href="006_config_injection.html">Injecting Configuration into Apps</a></li>
+    <li><a href="006_config_injection.html"><strong>006</strong> - Injecting Configuration into Apps</a></li>
   </ul>
 </nav>
   <div class="edit-this-page"><a href="file:///Users/uther/git/d2s/documentation/modules/ROOT/pages/006_config_injection.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
 <article class="doc">
-
+<h1 class="page">Configuration and Dependency Injection</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="_images/006-image001.png" alt="Injecting Configuration into Applications">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2><strong>Injecting Runtime Configuration into Applications</strong></h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>What will you learn?</strong></p>
+</div>
+<div class="paragraph">
+<p>This Module will introduce you to the concepts of Config Maps and Environment Variables being injected into active Pods</p>
+</div>
+<div class="paragraph">
+<p>This will highlight the functionality of changing Application behaviour without changing code and therefore the Image that is used for the Application. This allows for dependency injection to be used in Applications, and encourages the creation of Cloud Native behaviours.</p>
+</div>
+<div class="paragraph">
+<p>After completing the Module you will understand how to create, manipulate and use Config Maps to inject runtime information into Applications in OpenShift</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3><strong>Pre-Requisites</strong></h3>
+<div class="paragraph">
+<p>In order to undertake the Module you need to be logged onto the D2S cluster and have access to a Project. This Project is pre-created for you by the D2S Admins.</p>
+</div>
+<div class="paragraph">
+<p><strong>Ensure the two textboxes at the top of this HTML Guide to the Module contain the D2S Cluster address and the Project you have been assigned.</strong> If not use the 'Copy' button on the text below to get the Cluster address and add it to the Cluster textbox above (pressing <strong>RETURN</strong> after pasting it). Then add the Project name if it is not already there, again pressing <strong>RETURN</strong> after entering it into the field.</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">apps.ocp1.azure.dso.digital.mod.uk</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3><strong>Setting up an example Application for the module</strong></h3>
+<div class="paragraph">
+<p>First we will setup an example Application to show the use of the Config Maps and Environment variables.</p>
+</div>
+</div>
+</div>
+</div>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
