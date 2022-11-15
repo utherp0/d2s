@@ -117,7 +117,7 @@ For now create the first Application; click on *Create* to start the process.
 
 The OpenShift UI will now take you to the topology to show your Application being deployed. Depending on the speed of your connection this should be reasonably fast; you will see an empty roundel containing the icon you chose (the outer ring will be white). This will change to light blue while the Container is being deployed, and then to a dark blue to indicate the Container is active and the Application has been deployed.
 
-image::002-image002.png[Application Loading]
+image::002-image002.png[Application Loading,width=300px]
 
 You know have an Application active on D2S. Click on the Roundel itself and the topology page should look very similar to this:
 
