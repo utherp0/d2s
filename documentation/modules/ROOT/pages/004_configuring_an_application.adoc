@@ -37,3 +37,44 @@ This Module is all about crafting the way in which the Application operates with
 running Containers; in this Module we will adjust the way in which OpenShift hosts the Application, not the actual Application behaviour. In Module 006 we will examine the ways
 in which additional information can be provided to a running Application to effect the way in which it operates (using Config Maps and Environment Variables).
 ====
+
+For the sake of simplicty we will use a similar Application to the one we used in previous Modules.
+
+In the D2S UI make sure you are logged on, as stated in the pre-requisites and in the Project provided. Switch the UI to the Developer viewpoint using the selector in the top left.
+
+Select *+Add* from the left-hand menu.
+
+Click on *Container Images*. 
+
+Leave the selection of Image on *Image name from external registry*. Copy (or type) the following address into the textbox:
+
+[.console-input]
+[source,bash]
+----
+quay.io/ilawson/devex4
+----
+
+Click on the pulldown for the *Application* and select *Create Application*. In the *Application Name* textbox enter config-app. Set the *Name* to configexample.
+
+In *Resources* set the resource type to *DeploymentConfig*. Hit *Create* to start the Application creation and deployment.
+
+[NOTE]
+====
+As this is a create from Image it should setup the example application quickly. No build will be executed and the Topology page should appear with the application displayed as below.
+====
+
+image::004-image002.png[Running example Application]
+
+=== *Examining the Deployment Configuration for the Application*
+
+Click on the roundel for the Application. The panel that appears on the right of the Topology page will display the Deployment Configuration for the Application.
+
+[NOTE]
+====
+OpenShift uses two Objects for defining how an Application is deployed; a *Deployment*, which is the standard Kubernetes definition of a deployment (Image location and replicas), or a *DeploymentConfig*, which is the extended OpenShift object. +
+
+In this Module we will be examining and editing the DeploymentConfig created as part of the Application deployment. +
+
+The panel that appears will have an icon with the letters *DC* on it at the title of the tab. These icons are shortcuts for the type of Object being displayed.
+====
+

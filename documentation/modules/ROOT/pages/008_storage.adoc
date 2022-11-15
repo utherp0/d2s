@@ -30,3 +30,5 @@ apps.ocp1.azure.dso.digital.mod.uk
 === *Setting up an example Application for the module*
 
 First we will setup an example Application to show the use of Persistent Volumes and Storage within OpenShift
+
+This is how easy it is to write this stuff
