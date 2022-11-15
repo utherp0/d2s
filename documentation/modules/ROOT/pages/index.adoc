@@ -1,6 +1,8 @@
 = D2S OpenShift Introduction
 :!sectids:
 
+image::000-image001.png[Screenshot,width=500px]
+
 == *A Developer's Introduction to D2S/OpenShift*
 
 *Welcome to the D2S Developer's Introduction training material.* The goal of this online introduction is to get a Developer up to speed on the functionality and nuances of developing applications using the D2S platform.
