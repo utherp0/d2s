@@ -1,6 +1,8 @@
 = Configuring An Application
 :!sectids:
 
+image::d2s.png[D2S Logo,width=190px,float="right",align="center"]
+
 image::004-image001.png[Editing the Deployment Config]
 
 == *Configuring an OpenShift Application*

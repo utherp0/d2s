@@ -1,6 +1,8 @@
 = Source Code Deployment
 :!sectids:
 
+image::d2s.png[D2S Logo,width=190px,float="right",align="center"]
+
 image::003-image001.png[Creating an Application From Source Code]
 
 == *Understanding 'Source-2-Image'*

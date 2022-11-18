@@ -1,6 +1,8 @@
 = Deploying Multiple Applications
 :!sectids:
 
+image::d2s.png[D2S Logo,width=190px,float="right",align="center"]
+
 image::005-image001.png[Multiple Applications]
 
 == *Deploying Multiple Applications*

@@ -1,4 +1,7 @@
 = D2S OpenShift Introduction
+
+image::d2s.png[D2S Logo,width=190px,float="right",align="center"]
+
 :!sectids:
 
 image::000-image001.png[Screenshot,width=500px]

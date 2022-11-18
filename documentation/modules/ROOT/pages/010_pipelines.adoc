@@ -1,6 +1,8 @@
 = Introducing Pipelines for Developers
 :!sectids:
 
+image::d2s.png[D2S Logo,width=190px,float="right",align="center"]
+
 image::010-image001.png[Creating a Pipeline using the UI]
 
 == *Introducing Pipelines for Developers*

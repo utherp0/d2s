@@ -1,6 +1,8 @@
 = Configuration and Dependency Injection
 :!sectids:
 
+image::d2s.png[D2S Logo,width=190px,float="right",align="center"]
+
 image::006-image001.png[Injecting Configuration into Applications]
 
 == *Injecting Runtime Configuration into Applications*

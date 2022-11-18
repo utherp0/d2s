@@ -1,6 +1,8 @@
 = Adding Persistent Storage to Applications
 :!sectids:
 
+image::d2s.png[D2S Logo,width=190px,float="right",align="center"]
+
 image::008-image001.png[Setting up Storage]
 
 == *Adding Persistent Storage to Applications*
