@@ -50,6 +50,6 @@ image::006-image002.png[Active Application,width=400px]
 
 === *Testing the Application*
 
-Click on this link to test the application - https://envchecker-%PROJECT%-%CLUSTER_SUBDOMAIN%/envs/getall
+Click on this link to test the application - https://envchecker-%PROJECT%.%CLUSTER_SUBDOMAIN%/envs/getall[role='params-link',window='_blank']
 
 
