@@ -31,4 +31,25 @@ apps.ocp1.azure.dso.digital.mod.uk
 
 === *Setting up an example Application for the module*
 
-First we will setup an example Application to show the use of the Config Maps and Environment variables. 
+First we will setup an example Application to show the use of the Config Maps and Environment variables. This Application is a Quarkus app with some RESTful endpoints for examining
+and searching the environment variables exposed to the Container.
+
+Make sure you are at the Developer Viewpoint and viewing the *Topology* page. Click *+Add* then *Import from Git*. In the Git repo textbox paste the value from below:
+
+[.console-input]
+[source,bash]
+----
+https://github.com/utherp0/envchecker
+----
+
+Set the *Application* (which is the Application Grouping) to *config-app* by selecting *Create Application* from the pulldown and entering config-app into the textbox. Leave the name as *envchecker*. Set the *Resource* type to generate to *DeploymentConfig*. Hit *Create* to start the build.
+
+Once the build has completed successfully the Application Roundel should appear as shown below:
+
+image::006-image002.png[Active Application,width=400px]
+
+=== *Testing the Application*
+
+Click on this link to test the application - https://envchecker-%PROJECT%-%CLUSTER_SUBDOMAIN%/envs/getall
+
+

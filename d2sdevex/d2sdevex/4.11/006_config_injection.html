@@ -268,7 +268,33 @@
 <div class="sect2">
 <h3><strong>Setting up an example Application for the module</strong></h3>
 <div class="paragraph">
-<p>First we will setup an example Application to show the use of the Config Maps and Environment variables.</p>
+<p>First we will setup an example Application to show the use of the Config Maps and Environment variables. This Application is a Quarkus app with some RESTful endpoints for examining
+and searching the environment variables exposed to the Container.</p>
+</div>
+<div class="paragraph">
+<p>Make sure you are at the Developer Viewpoint and viewing the <strong>Topology</strong> page. Click <strong>+Add</strong> then <strong>Import from Git</strong>. In the Git repo textbox paste the value from below:</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">https://github.com/utherp0/envchecker</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Set the <strong>Application</strong> (which is the Application Grouping) to <strong>config-app</strong> by selecting <strong>Create Application</strong> from the pulldown and entering config-app into the textbox. Leave the name as <strong>envchecker</strong>. Set the <strong>Resource</strong> type to generate to <strong>DeploymentConfig</strong>. Hit <strong>Create</strong> to start the build.</p>
+</div>
+<div class="paragraph">
+<p>Once the build has completed successfully the Application Roundel should appear as shown below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/006-image002.png" alt="Active Application" width="400px">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3><strong>Testing the Application</strong></h3>
+<div class="paragraph">
+<p>Click on this link to test the application - <a href="https://envchecker-%PROJECT%-%CLUSTER_SUBDOMAIN%/envs/getall" class="bare">https://envchecker-%PROJECT%-%CLUSTER_SUBDOMAIN%/envs/getall</a></p>
 </div>
 </div>
 </div>
