@@ -121,7 +121,7 @@ The OpenShift UI will now take you to the topology to show your Application bein
 
 image::002-image002.png[Application Loading,width=300px]
 
-You know have an Application active on D2S. Click on the Roundel itself and the topology page should look very similar to this:
+You now have an Application active on D2S. Click on the Roundel itself and the topology page should look very similar to this:
 
 image::002-image003.png[Topology View]
 
