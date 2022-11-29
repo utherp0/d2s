@@ -220,6 +220,8 @@ These are completely optional but give you a chance to explore the concepts of t
 
 *Add an environment variable directly into the DeploymentConfig. After the Application has deployed, edit the DeploymentConfig and change the value. Compare the behaviour to changing values in a ConfigMap*
 
+*Tidy the Module up by deleting all the components*
+
 [TIP]
 ====
 Any changes directly to the value of an environment variable applied from the DeploymentConfig get applied instantly; the change to a value in the DeploymentConfig is deemed to be a state change and the Application will be redeployed to match the required state.
