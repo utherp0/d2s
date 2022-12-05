@@ -268,7 +268,264 @@
 <div class="sect2">
 <h3><strong>Setting up the example Applications for the module</strong></h3>
 <div class="paragraph">
-<p>First we will setup three simple Applications within the Project</p>
+<p>First we will setup three simple Applications within the Project. Make sure you are at the Developer Viewpoint. Click <strong>+Add</strong>. Choose <strong>Container images</strong>. Enter the following text into the <strong>Image name from external registry</strong> entry point:</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">quay.io/ilawson/devex4</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In <strong>Application</strong> choose <strong>Create Application</strong> and give it the name <strong>networking-app</strong>. Change the <strong>Name</strong> to <strong>application1</strong>. Hit <strong>Create</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Click <strong>+Add</strong> again. Choose <strong>Import from Git</strong>. Copy the text from below into the <strong>Git Repo URL</strong> textbox:</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">https://github.com/utherp0/bootcampapp</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Choose <strong>networking-app</strong> from the <strong>Application</strong> pulldown. Set the <strong>Name</strong> to <strong>application2</strong>. Click <strong>Create</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Click <strong>+Add</strong> again. Click on <strong>All services</strong>. Click on the <strong>.NET</strong> Builder Image. Click <strong>Create Application</strong>. Under the <strong>Git Repo URL</strong> pulldown click on <strong>Try sample</strong>. In <strong>Application</strong>
+select the <strong>networking-app</strong> option. Give it the <strong>Name</strong> <strong>application3</strong>. Hit <strong>Create</strong>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/009-image002.png" alt="The Module Applications" width="550px">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3><strong>Understanding Networking in OpenShift</strong></h3>
+<div class="paragraph">
+<p>OpenShift has two basic primitives for Networking, <strong>Services</strong> and <strong>Routes</strong>.</p>
+</div>
+<div class="paragraph">
+<p>A <strong>Service</strong> provides a port-based ingress point into the <em>Application</em>. A <strong>Route</strong> provides a Fully Qualified Domain Name <strong>URI</strong> to ingress traffic into a <strong>Service</strong>.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">The SDN - Software Defined Network</div>
+<div class="paragraph">
+<p>Everything that runs within OpenShift/Kubernetes lives on an internal network, the <strong>SDN</strong>, which covers all of the machines that make up the Cluster.</p>
+</div>
+<div class="paragraph">
+<p>This Network is completely internalised; it has no visibility of connectivity to the outside world, and is just an overlay network for all the Applications running within the Cluster.</p>
+</div>
+<div class="paragraph">
+<p>The <strong>Services</strong> provide 'doorbells' into the Application, and are based on individual ports. For instance, if you have an Application that listens on two Ports, you would need two Services for it to be able to receive traffic.</p>
+</div>
+<div class="paragraph">
+<p>Where it gets interesting is that the <strong>Services</strong> have IP addresses on the SDN and are <strong>singular</strong> regardless of the number of replicas of the Application. So if you have 10 replicas of
+your Application running in Pods, each Pod has a unique IP address <em>in a different range</em> to the Service. The Service is a loadbalancer across all the replicas.</p>
+</div>
+<div class="paragraph">
+<p><strong>Routes</strong> then provide the abstracted linkage of the outside world into the <strong>Services</strong>, but the nice thing about the Routes is that they can be changed without changing the underlying Services, and can
+actually point to <strong>multiple</strong> Services with a % load balancing themselves.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>For the sake of simplicity, and to highlight a nice feature of the UI, we are going to add links to the <strong>Services</strong> and <strong>Routes</strong> on the lefthand navigation panel. To do this click on <strong>Search</strong>. Click the
+pulldown for <strong>Resources</strong> and search for 'service'. Tick the box next to <strong>Service</strong> and then click on the <strong>Add to navigation</strong>. Then search for 'route', tick the box next
+to <strong>Route</strong> and then click on <strong>Add to navigation</strong>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/009-image003.png" alt="Selecting add-ons for navigation" width="550px">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3><strong>Using Shorthand Service names for inter-Application communication</strong></h3>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>In this exercise we will show how the system provides 'shortcuts' within the Applications for talking to Services in the same Project</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>First, click on the shortcut on the lefthand panel for <strong>Services</strong>.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>You will see a list of Services with pertinent information about them listed.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Here&#8217;s where it gets interesting. Each of the Services is named after the application it is linked to; when we created the applications giving them a name assigned
+that name to all objects tied to that Application, for instance <strong>DeploymentConfig</strong>, <strong>Services</strong>, etc.<br></p>
+</div>
+<div class="paragraph">
+<p>The OpenShift SDN provides <em>resolvable</em> DNS entries for all the Services within the Project <em>by name</em>. In English it means that, local to the Project, all Applications
+can <strong>directly</strong> reference the Services by name only, which is what we will now prove</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Switch to the <strong>Topology</strong> page and click on the Roundel for <strong>Application1</strong>. The righthand panel should now display the overview information for the <strong>Deployment</strong> 'application1'. In the <strong>Pods</strong> click on the active Pod name.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>We will now be doing some commands within the Terminal for the Pod. The security settings for the Cluster may have a very short inactivity timeout; if you get disconnected simply reconnect by clicking on the prompt and carry on
+from where you are in the instructions.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Click on <strong>Terminal</strong>. Now enter the following command:</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">curl http://application2:8080</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>What you will see is a set of HTML; this is the output of the Application <strong>application2</strong>. Using the 'curl' command we have done a URI pull directly.</p>
+</div>
+<div class="paragraph">
+<p>Now type:</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">env | grep APPLICATION2</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>OpenShift also injects a lot of connectivity information directly into the other Applications for the Service endpoints; note the definitions of protocols, ports and IP addresses.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Also note that the <strong>Service</strong> application2 actually has two endpoints defined via the Service. One is for http (8080), one is for https (8443)</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3><strong>Using FQDN references for Service communications</strong></h3>
+<div class="paragraph">
+<p>We have shown that you can use the <strong>name</strong> of the <strong>Service</strong> to directly communicate from one Application to another. This is useful because it is a direct reference, meaning
+a lack of need for Service discovery and external resolution of the Services.</p>
+</div>
+<div class="paragraph">
+<p>OpenShift also provides resolution of the Service using a Fully Qualified Domain Name, rather than the shorthand Service name notation.</p>
+</div>
+<div class="paragraph">
+<p>Switch to the <strong>Topology</strong> panel. Click on the roundel for <strong>application2</strong>. In the righthand panel which will be showing overview information for the <strong>Deployment</strong> application2, click on the active Pod name.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>We will now be doing some commands within the Terminal for the Pod. The security settings for the Cluster may have a very short inactivity timeout; if you get disconnected simply reconnect by clicking on the prompt and carry on
+from where you are in the instructions.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Click on <strong>Terminal</strong>. Now enter the following command:</p>
+</div>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">curl http://application3.redhat-training.svc.cluster.local:8080</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The format of the FQDN for internal communications with Applications in <em>any Project you have visibility of</em> is (service name).(project name).<strong>svc.cluster.local</strong></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>You should see the HTML output of the <strong>application3</strong> application via the <strong>application3</strong> service.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you have multiple Projects in OpenShift you can communicate between them using this method.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Also be aware that there are objects in OpenShift called <strong>NetworkPolicies</strong> that allow very fine-grain control over who/what can access your Service endpoints. Due to security these are prohibited in D2S, other than administration-created ones.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
