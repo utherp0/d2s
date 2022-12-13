@@ -248,6 +248,94 @@
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3>The beauty of Kubernetes</h3>
+<div class="paragraph">
+<p>Kubernetes comes across as extremely complex, but under the covers it&#8217;s an elegant and brilliantly simple engine. It uses a clever form of abstraction between 'intended state' and
+'actual state' which makes it very resilient, self-healing and robust. Put simply <strong>Kubernetes is an object-based state engine</strong>.</p>
+</div>
+<div class="paragraph">
+<p>What we mean by 'objects' are defined typed components. <strong>Kubernetes</strong> has a defined lexicon of Objects that it understands, and when you interact with <strong>Kubernetes</strong> or <strong>OpenShift</strong> all you are doing is creating, modifying or deleting Objects.</p>
+</div>
+<div class="paragraph">
+<p>The abstracted idea comes in with the physical realisation of the Objects. In essence <strong>Kubernetes</strong> is two distinct engines; a control plane that handles creation, modification and deletion of instances
+of Objects, and a realisation point where the physical versions of Objects, at their defined state, are maintained.</p>
+</div>
+<div class="paragraph">
+<p>In <strong>Kubernetes</strong> speak you have <strong>Worker nodes</strong> where the actual workloads, Pods, are executed and maintained. Kubernetes has an agent, a small mini-brain, running on each of the Nodes that responds to
+state change requests from the control plane (called a <strong>kubelet</strong>). The task of the <strong>kubelet</strong> is to make the required physical state match the required Object state. It does this
+through a process, not instanteous, called <strong>reconcilation</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Basically the control plane consists of an interface allowing state change requests, a 'brain' (clustered data store) where the required Object states are stored and communications to the <strong>kubelets</strong> for reconciliation actions.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>It gets much cooler. OpenShift is built on a technology called the <strong>operator framework</strong> which allows for the extension of the Object <em>lexicon</em> without changing the control plane - more of this later</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><em>Why is this approach clever?</em> For a start, having a disconnected state change/reconciliation architecture allows the system to be very resilient. It&#8217;s a fire-and-forget model but it&#8217;s also a state engine, meaning that it can react to invalid state quickly. In fact
+both <strong>Kubernetes</strong> and <strong>OpenShift</strong> are 'violently' reactive; if the brain says there needs to be, say, four replicas of an application then <strong>Kubernetes</strong> continually works to reconcile that state until the physical world,
+ represented by the reports from the Kubelet, matches exactly the intended state in the brain.</p>
+</div>
+</div>
+<div class="sect2">
+<h3>How does this apply to 'Applications'</h3>
+<div class="paragraph">
+<p>Interestingly there is a project called <strong>KCP</strong> that disentangles the <strong>Kubernetes</strong> control plane from <strong>Kubelets</strong>. In English this means that, theoretically, if you can write a reconcilation agent for <strong>anything</strong> then anything can be orchestrated using the
+state/reconciliation engine. Imagine having a <strong>Kubernetes</strong> control plane that worked with 'cars' instead of 'applications'.</p>
+</div>
+<div class="paragraph">
+<p>But back to Applications; <strong>Kubernetes</strong> was designed to be a high-level orchestrator of 'containers'. When Containers first hit the industry they were limited to running on a single box. <strong>Docker</strong> was a clever technology but
+focused on a single host. Google had developed a proprietary internal project called <strong>Borg</strong> which handled millions of Containers, but wanted something
+open source so as to allow for innovation outside of Google. <strong>Kubernetes</strong> came out of that.</p>
+</div>
+<div class="paragraph">
+<p>The smallest deployable atomic component of a <strong>Kubernetes</strong> system is the <strong>Pod</strong>, which is one or more Containers deployed to the same physical <strong>space</strong>. All orchestration within <strong>Kubernetes</strong> is based on the placement and maintenance of Pods on Worker Nodes via Kubelets.</p>
+</div>
+<div class="paragraph">
+<p>In essence a Pod is an instance of a deployable Application, where Application is <strong>anything</strong> that can represented in a Container, from the smallest Microservice right up to a full database.</p>
+</div>
+<div class="paragraph">
+<p>The concept of a <strong>Pod</strong> was also intended to encourage Cloud Native behaviour; the Pods are transient, meaning they can be lost and automatically recreated, using the state/reconciliation described earlier.</p>
+</div>
+</div>
+<div class="sect2">
+<h3>So, what is OpenShift?</h3>
+<div class="paragraph">
+<p>OpenShift is badly named. It <strong>is</strong> Kubernetes, with enterprise additions to make it secure, easy to access and use from an Administration and a Development perspective.</p>
+</div>
+<div class="paragraph">
+<p>Going back to what we were talking about around the Object lexicon - the control plane actually works by having a number of while-true loops that are waiting for events. Each of the while-true loops, called a <strong>Controller</strong>, owns
+a distinct Object type, and receives and processes the events relating to that object (create, edit, delete).</p>
+</div>
+<div class="paragraph">
+<p>OpenShift uses a technology called the <strong>Operator Framework</strong>. In English an Operator actually provides an application that acts as an additional <strong>Controller</strong> (the while-true loops that process object-specific requests) for an Object that is external to the <strong>Kubernetes</strong> lexicon. Basically you can create and manipulate new Object types in <strong>OpenShift</strong>
+by using an Operator. In fact all of OpenShift <strong>is</strong> Operators adding additional functionality on top of <strong>Kubernetes</strong>. This is a brilliant concept as
+it allows you to extend the Object model yourself without changing the base <strong>Kubernetes</strong>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3>OpenShift from a Developer perspective</h3>
+<div class="paragraph">
+<p>Away from the mechanics of <strong>Kubernetes</strong> the OpenShift system is a joy for developers. If you come from a dev background you&#8217;ll have had the usual issues; hard to get a dev environment, hard to work in a consistent way with the team, hard to work with build systems and the like.</p>
+</div>
+<div class="paragraph">
+<p><strong>OpenShift</strong> provides a far more efficient way to develop. In the space of a couple of clicks you can have a running Application. The system provides consistent build and deployment frameworks out of the box, but behaves like a big box of useful
+technical Lego; if you want to take a simple path through development, the tools are all there to help (and this course explains a number of them). It is designed to allow us developers
+to spend more time developing and less time doing nugatory tasks that add nothing to our end solutions.</p>
+</div>
+</div>
 </div>
 </div>
 </article>
