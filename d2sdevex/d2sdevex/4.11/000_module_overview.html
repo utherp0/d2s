@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Source Code Deployment :: Developer Introduction to OpenShift</title>
+    <title>An Overview of the Modules :: Developer Introduction to OpenShift</title>
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../../_/css/site.css">
 <link rel="icon" href="../../_/img/favicon.ico" type="image/x-icon">
@@ -149,7 +149,7 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item is-current-page" data-depth="1">
     <a class="nav-link" href="000_module_overview.html"><strong>000</strong> - Module Overviews</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -158,7 +158,7 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="002_deploying_an_application.html"><strong>002</strong> - Deploying an Application to OpenShift</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="1">
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="003_s2i.html"><strong>003</strong> - Deploying an Application from Source Code</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -216,14 +216,14 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">D2S Introduction to OpenShift Course</a></li>
-    <li><a href="003_s2i.html"><strong>003</strong> - Deploying an Application from Source Code</a></li>
+    <li><a href="000_module_overview.html"><strong>000</strong> - Module Overviews</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="file:///Users/uther/git/d2s/documentation/modules/ROOT/pages/003_s2i.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="file:///Users/uther/git/d2s/documentation/modules/ROOT/pages/000_module_overview.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Source Code Deployment</h1>
+<h1 class="page">An Overview of the Modules</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="imageblock right text-center">
@@ -233,18 +233,47 @@
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/003-image001.png" alt="Creating an Application From Source Code">
+<img src="_images/000-image001.png" alt="OpenShift">
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2><strong>Understanding 'Source-2-Image'</strong></h2>
+<h2><strong>What the Modules cover</strong></h2>
 <div class="sectionbody">
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p><strong>What will you learn?</strong></p>
+<p><strong>001 - A High Level Introduction to OpenShift</strong></p>
+</div>
+<div class="paragraph">
+<p>This Module will give you an overview of what OpenShift actually is, and how it works.</p>
+</div>
+<div class="paragraph">
+<p>This will involve explaining the Object model and Kubernetes. The Module is a non-interactive one and can be skipped if the Reader understands the basic concepts of Objects, Reconciliation, Eventually Consistent State and Containers/Pods.</p>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>002 - Deploying an Application to OpenShift</strong></p>
+</div>
+<div class="paragraph">
+<p>This Module will introduce you to the concepts of <strong>Applications</strong> from the perspective of deploying them on OpenShift.</p>
+</div>
+<div class="paragraph">
+<p>This application already exists as a Docker Image; this Module will walk you through the steps to execute it as an Application.</p>
+</div>
+<div class="paragraph">
+<p>After completing the Module you will understand the concepts of an Application and how to instantiate one with OpenShift.</p>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>003 - Deploying an Application from Source Code</strong></p>
 </div>
 <div class="paragraph">
 <p>This Module will introduce you to the concept of building Applications directly from Source Code rather than a pre-built Image</p>
@@ -257,253 +286,119 @@
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3><strong>Pre-Requisites</strong></h3>
-<div class="paragraph">
-<p>In order to undertake the Module you need to be logged onto the D2S cluster and have access to a Project. This Project is pre-created for you by the D2S Admins.</p>
-</div>
-<div class="paragraph">
-<p><strong>Ensure the two textboxes at the top of this HTML Guide to the Module contain the D2S Cluster address and the Project you have been assigned.</strong> If not use the 'Copy' button on the text below to get the Cluster address and add it to the Cluster textbox above (pressing <strong>RETURN</strong> after pasting it). Then add the Project name if it is not already there, again pressing <strong>RETURN</strong> after entering it into the field.</p>
-</div>
-<div class="listingblock console-input">
+<div class="exampleblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">apps.ocp1.azure.dso.digital.mod.uk</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3><strong>An Introduction to Source-2-Image</strong></h3>
 <div class="paragraph">
-<p>All Applications, and even OpenShift itself, run as Pods on what are known as <strong>'Worker Nodes'</strong>. For a Container to be instantiated it needs to have a base Image; when a Pod is created in OpenShift the file system that makes
-up an Image, which is actually a set of file-differences applied in order, is written to the target Worker Node and executed there. These Images are sourced from an internal Integrated Registry which, in the first Module, we populated
-using an Image from the outside world that had been pre-created.</p>
+<p><strong>004 - Configuring an Application</strong></p>
 </div>
 <div class="paragraph">
-<p>This is not always an available option and in fact OpenShift was explicitly designed with an extensible concept called <strong>Source-2-Image</strong> which will automatically construct an Image for instantiation as a Pod from two components; a base
-framework Image containing the runtime and compilation tools for a target language, and a source repository containing just source (and normally nothing OpenShift or Kubernetes).</p>
+<p>This module will introduce you to the configuration options for the Applications running within OpenShift</p>
 </div>
 <div class="paragraph">
-<p>In essence this approach is elegantly simple; OpenShift provides the concept of a <strong>BuildConfig</strong> object which tells OpenShift how to build the end composite Image, what base framework to use, what source repository to use and what Objects to place the completed elements in, very similar
-to the Objects created by the approach shown in Module 002.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Think of OpenShift as being two sides of a coin; one side is all about orchestrating immutable Images as Applications, the other is building those Images.<br></p>
+<p>This will highlight the components you can change and their effect</p>
 </div>
 <div class="paragraph">
-<p>Source-2-Image actually works by running a build container behind the scenes that executes a build based on the framework (i.e. if the framework is JAVA it performs a Maven build) using the source provided and then
-writes a composite Image containing the build output into the Registry. At that point the other side of the coin takes over and OpenShift deploys the Application</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>As you will see in this Module the S2I approach does everything for you, including the creation of the Application objects, such as the Service, Route, Pods and DeploymentConfig, as with the
-creation of an Application from an existing Image as shown in Module 002.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>The example provided is a JAVA Quarkus application built for a student bootcamp. OpenShift provides a number of S2I Builder Images out-of-the-box; if you want to try another framework
-select a different Builder Image when prompted to use the OpenJDK one and use the 'Try Sample' link shown beneath the Git Repo URL textbox rather than the one provided in the instructions.</p>
-</div>
-</td>
-</tr>
-</table>
+<p>After completing the Module you will be able set various behaviours of the Application running in OpenShift, from the perspective of the way in which the Application is hosted</p>
 </div>
 </div>
-<div class="sect2">
-<h3><strong>Creating the Application</strong></h3>
-<div class="paragraph">
-<p>On the D2S OpenShift UI switch to the Developer viewpoint (if you are not logged on please complete the pre-requisites listed at the top of this Module).</p>
 </div>
-<div class="paragraph">
-<p>Click Add+</p>
-</div>
-<div class="paragraph">
-<p>On the Add tab click on <strong>All services</strong>. This will display the entire Developer Catalog. On the left hand side of the panel select <strong>Builder Images</strong>.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>The D2S system currently has 11 builder images installed. The S2I is actually an extensible concept and allows for additional Builder Images to be added over time if new technology comes along.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Either scroll down and find the <strong>Red Hat OpenJDK</strong> Builder Image, or filter using <strong>openjdk</strong>.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>You will find two Builder Images relating to OpenJDK. One is based around the JBoss EAP and the other is for building pure JAVA using Maven and OpenJDK.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Click on the Red Hat OpenJDK Builder Image (if you want to try another framework, choose one instead).</p>
-</div>
-<div class="imageblock">
+<div class="exampleblock">
 <div class="content">
-<img src="_images/003-image002.png" alt="S2I Dialog" width="400px">
-</div>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
 <div class="paragraph">
-<p>Note that in the case of creating from Source you get a BuildConfig in addition to the Objects you get when creating from an Image. This BuildConfig tells OpenShift
-exactly how to build the Image, and the ImageStream is an Object that contains metadata as to where that created Image is placed.</p>
-</div>
-</td>
-</tr>
-</table>
+<p><strong>005 - Deploying Multiple Apps</strong></p>
 </div>
 <div class="paragraph">
-<p>Click on 'Create Application' to start the process.</p>
+<p>This short module will introduce you to the concepts around deploying multiple Applications in the same Project</p>
 </div>
 <div class="paragraph">
-<p>First note that there is a pulldown at the top of the form titled <strong>Builder Image Version</strong>. OpenShift S2I allows for the selection of which specific framework Image relating to a technology to use; in the case of the
-OpenJDK Red Hat ships OpenJDK 17, 11 and 8 as options (the last part of the Image name refers to the underlying OS used in the framework Container - for instance
-<strong>-ubi8</strong> indicates that the composite Image will be underpinned using the lightweight 'Universal Base Image' for RHEL8).</p>
+<p>This will highlight the capabilities in terms of grouping and also the nature of implicit Service Discovery provided by OpenShift between Applications running in the same Project</p>
 </div>
-<div class="imageblock">
+<div class="paragraph">
+<p>After completing the Module you will understand the concepts of multiple Application hosting and the advantages provided working within a single Project</p>
+</div>
+</div>
+</div>
+<div class="exampleblock">
 <div class="content">
-<img src="_images/003-image003.png" alt="Framework Dialog" width="400px">
-</div>
+<div class="paragraph">
+<p><strong>006 - Injecting Configuration into Apps</strong></p>
 </div>
 <div class="paragraph">
-<p>Copy the following text into the <strong>'Git Repo URL'</strong> field (if you are using a different Builder Image click on the 'Try Sample' below the field to fill it with that instead).</p>
+<p>This Module will introduce you to the concepts of Config Maps and Environment Variables being injected into active Pods</p>
 </div>
-<div class="listingblock console-input">
+<div class="paragraph">
+<p>This will highlight the functionality of changing Application behaviour without changing code and therefore the Image that is used for the Application. This allows for dependency injection to be used in Applications, and encourages the creation of Cloud Native behaviours.</p>
+</div>
+<div class="paragraph">
+<p>After completing the Module you will understand how to create, manipulate and use Config Maps to inject runtime information into Applications in OpenShift</p>
+</div>
+</div>
+</div>
+<div class="exampleblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">https://github.com/utherp0/bootcampapp</code></pre>
-</div>
+<div class="paragraph">
+<p><strong>007 - Injecting Secure Configuration into Apps</strong></p>
 </div>
 <div class="paragraph">
-<p>Once you have entered this data, or in the case of another Builder Image, the interface should indicate the URL is Validated.</p>
+<p>This short Module will introduce the concepts known as 'Secrets' which allow for the injection of encrypted information into the Applications</p>
 </div>
 <div class="paragraph">
-<p>Scroll down to the <strong>General</strong> components. Change the <strong>Application</strong> field (pull down and select 'Create Application') and enter 'quarkus-app' as the name (or if you are using another Builder Image, choose something
-like myexample-app).</p>
+<p>This will demonstrate the insertion of information that is secure to the Application, such as connection strings and passwords</p>
 </div>
 <div class="paragraph">
-<p>The <strong>Name</strong> field will have been pre-populated with the name of the Git repo used. In the case of the OpenJDK one change the name to 'quarkus'.</p>
+<p>After completing this Module you will understand the difference between Config Maps and Secrets, the usecases for the latter and how to create and manipulate these secrets</p>
 </div>
-<div class="paragraph">
-<p>In the <strong>Resources</strong> section set the resource type to <strong>DeploymentConfig</strong>.</p>
 </div>
-<div class="paragraph">
-<p>Make sure the <strong>Create a route to the Application</strong> box is ticked.</p>
 </div>
-<div class="paragraph">
-<p>Now hit Create to start the build.</p>
-</div>
-<div class="paragraph">
-<p>An empty Roundel will appear with the appropriate logo in it; click this and look at the right panel of information.</p>
-</div>
-<div class="paragraph">
-<p>Click on the View Logs and watch the build happen.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>When watching the log you will see the Source-2-Image doing its magic. It will download the layers of the framework image, clone the original source repo, perform the build
-(in the case of the OpenJDK it will run the Maven build), then write the composite file layers for the final image to the registry.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Once the build completes the Deployment takes over; this takes the Image generated and stored in the Integrated Registry and instantiates an Application with it.</p>
-</div>
-<div class="paragraph">
-<p>We now have an Application running built from source code. With the OpenJDK one you can test this by clicking on the <strong>Route</strong> icon at the top right of the Roundel.</p>
-</div>
-<div class="paragraph">
-<p>If you add the following code to the end of the URL you will see the endpoint responding with a second counter from call start:</p>
-</div>
-<div class="listingblock console-input">
+<div class="exampleblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">/endpoints/health</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3><strong>Further Exercises</strong></h3>
 <div class="paragraph">
-<p>These are completely optional but give you a chance to explore the concepts of the Module.</p>
+<p><strong>008 - Adding Storage to Apps</strong></p>
 </div>
 <div class="paragraph">
-<p><strong>Using the Builds tab on the Developer viewpoint force a new build and watch the Topology change when the build completes</strong></p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Select the BuildConfig, click on the 'Kebab' (this is the notation for the three vertical dot pulldown menus used within OpenShift) and start build; you can watch the state of the build and the historical state of builds from the Build Config tab</p>
-</div>
-</td>
-</tr>
-</table>
+<p>The Module introduces the concepts of Persistent Storage, which gives Applications storage that exists and persists beyond the lifespan of the Pod running in OpenShift</p>
 </div>
 <div class="paragraph">
-<p><strong>Remove the entire Application using the Topology tab and the Application Grouping Icon</strong></p>
+<p>This will demonstrate the concept, usecases and constructs used to create, manipulate and retain storage for Applications</p>
 </div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
 <div class="paragraph">
-<p>If you click on the 'Application' label of the roundel you can apply actions to the Application Grouping; use this to delete the Application and watch the topology. Note that the
-system requires you to enter the name of the Application Grouping to confirm deletion</p>
+<p>After completing this Module you will understand the concepts of Persistent Storage with regard to Applications in OpenShift</p>
 </div>
-</td>
-</tr>
-</table>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>009 - Understanding Application Networking</strong></p>
+</div>
+<div class="paragraph">
+<p>This Module will go into depth around the mechanisms for Networking of Applications within OpenShift. This will cover the Services, which are bound to the Project, Routes, which provide the external traffic connectivity and inter-Application networking. It will also explain Network Policies which allow for fine-grain control of traffic to a Service.</p>
+</div>
+<div class="paragraph">
+<p>The Module will include some practical examples of Networking using three distinct Services in the Project</p>
+</div>
+<div class="paragraph">
+<p>After completing this Module you will understand the nature of the abstracted SDN and the Service endpoints, how to setup Routes and what capabilities inter-Application Networking provides for Developers</p>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>010 - Introducing Pipelines for Developers</strong></p>
+</div>
+<div class="paragraph">
+<p>This Module will explain the basics of the Tekton Pipeline functionality within OpenShift from a developer&#8217;s perspective</p>
+</div>
+<div class="paragraph">
+<p>The Module will walk you through creating tasks and pipelines, executing those tasks and pipelines within OpenShift, and how to add persistent storage between tasks.</p>
+</div>
+<div class="paragraph">
+<p>It will also explain the theory behind Tasks and Pipelines to enable you to understand and exploit the concepts</p>
+</div>
+<div class="paragraph">
+<p>After completing this Module you will understand the capabilities of Tekton and be able to create Tasks and Pipelines</p>
+</div>
 </div>
 </div>
 </div>
