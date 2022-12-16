@@ -441,6 +441,16 @@ The tasks will create, check and delete a file on the shared storage
 
 image::010-image008.png[Pipeline PVC,width=600px]
 
+=== Cleaning up
+
+[TIP]
+====
+When you create Objects in OpenShift they will remain resident until you remove them
+====
+
+To finish the Module head to the *Topology page*, go to the *Pipelines* panel and delete all the Pipelines there. Then go to the *Tasks* panel and remove the tasks you created.
+
+
 
 
 

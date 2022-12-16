@@ -217,6 +217,24 @@ ls -al
 The file created internally in the last Pod will still be there; the Pod has been recreated and reattached to the same physical storage point.
 ====
 
+=== Cleaning up
+
+[TIP]
+====
+When you create Applications in OpenShift they will remain resident until you remove them
+====
+
+To finish the Module head to the *Topology page*, click on each of the *Application Groups* (i.e. (A) config-app) and in the *Actions* menu on the righthand panel for the Application choose *Delete Application*.
+The system will prompt you to enter the name of the Application Group; enter this name and press return/hit *Delete*.
+
+Also go to the *Storage* panel (via your shortcut on the lefthand navigation panel). Remove the PVC if it remains (click on the three dot/kebab at the far right and choose *Delete PersistentVolumeClaim*). 
+
+[TIP]
+====
+Deleting the Application Group removes all of the Objects relating to the application
+====
+
+
 
 
 

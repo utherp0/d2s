@@ -178,5 +178,20 @@ These are completely optional but give you a chance to explore the concepts of t
 Use 'oc help' to work out which command. Also, use the 'Copy Login Command' from the pulldown at the top right of the UI, where your login name is displayed, to log the oc client on correctly from the Application itself.
 ====
 
+=== Cleaning up
+
+[TIP]
+====
+When you create Applications in OpenShift they will remain resident until you remove them
+====
+
+To finish the Module head to the *Topology page*, click on each of the *Application Groups* (i.e. (A) devex-app) and in the *Actions* menu on the righthand panel for the Application choose *Delete Application*.
+The system will prompt you to enter the name of the Application Group; enter this name and press return/hit *Delete*.
+
+[TIP]
+====
+Deleting the Application Group removes all of the Objects relating to the application
+====
+
 
 
