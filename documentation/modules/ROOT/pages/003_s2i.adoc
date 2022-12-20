@@ -29,6 +29,15 @@ In order to undertake the Module you need to be logged onto the D2S cluster and 
 apps.ocp1.azure.dso.digital.mod.uk
 ----
 
+[WARNING]
+====
+*Please Read* - if you are using a *shared* project you may encounter issues with naming; this is because Objects within a *Project* must be _uniquely_ named. If someone
+else is doing this course in the same Project they may have created objects with the names stated. +
+
+*If you get an error when trying to create _anything_ as part of this module, add "__(your initials)" to the end of the Name attribute for the object
+you are creating*
+====
+
 === *An Introduction to Source-2-Image*
 
 All Applications, and even OpenShift itself, run as Pods on what are known as *'Worker Nodes'*. For a Container to be instantiated it needs to have a base Image; when a Pod is created in OpenShift the file system that makes

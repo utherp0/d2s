@@ -31,6 +31,15 @@ In order to undertake the Module you need to be logged onto the D2S cluster and 
 apps.ocp1.azure.dso.digital.mod.uk
 ----
 
+[WARNING]
+====
+*Please Read* - if you are using a *shared* project you may encounter issues with naming; this is because Objects within a *Project* must be _uniquely_ named. If someone
+else is doing this course in the same Project they may have created objects with the names stated. +
+
+*If you get an error when trying to create _anything_ as part of this module, add "__(your initials)" to the end of the Name attribute for the object
+you are creating*
+====
+
 === *An overview of the basics; Tasks and Pipelines*
 
 Tekton provides a set of atomic components for creating extensive Pipeline functionality involving manipulating Objects within OpenShift.
